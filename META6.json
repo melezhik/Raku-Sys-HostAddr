@@ -1,0 +1,23 @@
+{
+  "auth" : "cpan:JMASLAK",
+  "authors" : [
+    "Joelle Maslak"
+  ],
+  "build-depends" : [ ],
+  "depends" : [ 
+      "Cro::HTTP::Client",
+      "Net::Netmask"
+  ],
+  "description" : "Get IP address information about this host",
+  "license" : "Artistic-2.0",
+  "name" : "Sys::HostAddr",
+  "perl" : "6.c",
+  "provides" : {
+    "Sys::HostAddr" : "lib/Sys/HostAddr.pm6"
+  },
+  "resources" : [ ],
+  "source-url" : "https://github.com/jmaslak/Raku-Sys-HostAddr.git",
+  "tags" : [ ],
+  "test-depends" : [ ],
+  "version" : "0.0.1"
+}

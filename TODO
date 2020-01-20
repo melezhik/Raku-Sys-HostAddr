@@ -1,0 +1,5 @@
+FUTURE IMPROVEMENTS:
+
+ - Support more OSes (Windows! Other Unixes)
+ - Implement full interface from Perl5's Sys::HostAddr
+
