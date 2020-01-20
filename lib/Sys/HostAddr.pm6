@@ -186,6 +186,10 @@ Sys::Domainname - Get IP address information about this host
   my $sysaddr = Sys::HostAddr.new;
   my $string = $sysaddr->public;
 
+  my @addresses = $sysaddr->addresses;
+  my @interfaces = $sysaddr->interfaces;
+  my @on-int-addresses = $sysaddr->addresses-on-interface('eth0');
+
 =head1 DESCRIPTION
 
 This module provides methods for determining IP address information about
@@ -273,6 +277,20 @@ members.
 Returns the addresses on the interface provided.  If the C<ip> command cannot
 be executed (for instance, on Windows), this will return a sequene with no
 members.
+
+=head2 guess-ip-for-host(Str:D $ip -->Str)
+
+  my $ha = Sys::HostAddr.new;
+  $address = $ha.guess-ip-for-host('192.0.2.1');
+
+Returns an address associated with the interface used to route packets to
+the given destination.  Where more than one address exists on that interface,
+or more than one interface has a route to the given host, only one will be
+returned.
+
+This will return C<Str> (undefined type object) if either the host isn't
+routed in the routing table or if the C<ip> command cannot be executed (for
+instance, on Windows).
 
 =head1 AUTHOR
 
