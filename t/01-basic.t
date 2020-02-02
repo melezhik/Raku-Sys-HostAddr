@@ -85,6 +85,19 @@ subtest "guess-ip-for-host" => sub {
     }
 }
 
+subtest "guess-main" => sub {
+    my $ha = Sys::HostAddr.new;
+    my $guess = $ha.guess-ip-for-host('0.0.0.0');
+
+    can-ok Sys::HostAddr.new, 'guess-main', "guess-main method exists";
+    if $ip-command-exists {
+        is $ha.guess-main(), $guess, "Check we get the expected IP";
+    } else {
+        # No ip command means no routes
+        ok ! $ha.guess-main().defined, "Check we got no IP";
+    }
+}
+
 is %*ENV<PATH>, $old-path, "Path wasn't reset";
 
 done-testing;

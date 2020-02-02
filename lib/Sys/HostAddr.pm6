@@ -138,6 +138,11 @@ method guess-ip-for-host(Str:D $dst -->Str) {
     }
 }
 
+method guess-main(-->Str) {
+    my $ip = ($!ipv == 4) ?? '0.0.0.0' !! '2000::';
+    return self.guess-ip-for-host($ip);
+}
+
 method get-route(Str:D $dst -->Str) {
     my %routes = self.get-routes;
     for %routes.kv -> $k, $v {
@@ -291,6 +296,21 @@ returned.
 This will return C<Str> (undefined type object) if either the host isn't
 routed in the routing table or if the C<ip> command cannot be executed (for
 instance, on Windows).
+
+=head2 guess-main(-->Str)
+
+  my $ha = Sys::HostAddr.new;
+  $address = $ha.guess-main-for-ipv4
+
+Returns the result of either C<.guess-ip-for-host('0.0.0.0')> or
+C<.guess-ip-for-host('2000::')> depending on the value of C<$.ipv4>.
+
+=head2 guess-main-for-ipv6(-->Str)
+
+  my $ha = Sys::HostAddr.new;
+  $address = $ha.guess-main-for-ipv6
+
+Returns the result of C<.guess-ip-for-host('2000::')>.
 
 =head1 AUTHOR
 
