@@ -5,7 +5,7 @@ use v6;
 # Used Jeremy Kiester's Perl5 Sys::HostAddr as the source of inspiration.
 #
 
-unit class Sys::HostAddr:ver<0.0.1>:auth<cpan:JMASLAK>;
+unit class Sys::HostAddr:ver<0.1.0>:auth<cpan:JMASLAK>;
 
 use Cro::HTTP::Client;
 use Net::Netmask;

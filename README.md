@@ -109,6 +109,22 @@ Returns an address associated with the interface used to route packets to the gi
 
 This will return `Str` (undefined type object) if either the host isn't routed in the routing table or if the `ip` command cannot be executed (for instance, on Windows).
 
+guess-main(-->Str)
+------------------
+
+    my $ha = Sys::HostAddr.new;
+    $address = $ha.guess-main-for-ipv4
+
+Returns the result of either `.guess-ip-for-host('0.0.0.0')` or `.guess-ip-for-host('2000::')` depending on the value of `$.ipv4`.
+
+guess-main-for-ipv6(-->Str)
+---------------------------
+
+    my $ha = Sys::HostAddr.new;
+    $address = $ha.guess-main-for-ipv6
+
+Returns the result of `.guess-ip-for-host('2000::')`.
+
 AUTHOR
 ======
 
