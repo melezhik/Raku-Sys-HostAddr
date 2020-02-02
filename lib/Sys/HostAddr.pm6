@@ -106,7 +106,7 @@ method get-routes(-->Hash) {
 
     my %ret;
     for $output.lines -> $line {
-        $line ~~ m/^ ( \S+ ) .* \s dev \s ( \S+ )/;
+        $line ~~ m/^ [ <-[ 0..9 a..f ]> \S* \s ]? ( \S+ ) .* \s dev \s ( \S+ )/;
         my $ip = ~$0;
         my $dev = ~$1;
 
