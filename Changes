@@ -1,6 +1,8 @@
 Revision history for Sys::HostAddr
 
 {{$NEXT}}
+
+0.1.1  2020-02-02T06:51:32Z
   * Support WSL (no status in the ip output)
 
 0.1.0  2020-02-02T04:46:20Z
