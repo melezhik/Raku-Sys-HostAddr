@@ -76,7 +76,20 @@ method get-addresses-using-ip(-->Hash) {
 
     grammar IPAddrOutput {
         token TOP { <line>* }
+
+        # We have to strip @... off of interfaces because ip addr shows
+        # them in a docker container - example:
+        #   root@635ee3145917:/Raku-Sys-HostAddr# ip -4 -br addr list
+        #   lo               UNKNOWN        127.0.0.1/8
+        #   eth0@if7         UP             172.17.0.2/16
+        #
+        # But ip route doesn't:
+        #   default via 172.17.0.1 dev eth0
+        #   172.17.0.0/16 dev eth0 proto kernel scope link src 172.17.0.2
+        #
+        # So...we strip off the @if7 part:
         token line { ^^ <interface> [ \@ \S+ ]? <.ws> [ <status> <.ws> ]? [ <address> '/' \d+ <.ws> | <address> '/' \d+ ]* \n }
+
         token interface { <-[\s \@]>+ }
         token status    { <-[ 0..9 a..f ]> \S* }
         token address   { <[ \. : 0..9 a..f ]>+ }
