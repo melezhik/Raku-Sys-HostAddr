@@ -76,8 +76,8 @@ method get-addresses-using-ip(-->Hash) {
 
     grammar IPAddrOutput {
         token TOP { <line>* }
-        token line { ^^ <interface> <.ws> [ <status> <.ws> ]? [ <address> '/' \d+ <.ws> | <address> '/' \d+ ]* \n }
-        token interface { \S+ }
+        token line { ^^ <interface> [ \@ \S+ ]? <.ws> [ <status> <.ws> ]? [ <address> '/' \d+ <.ws> | <address> '/' \d+ ]* \n }
+        token interface { <-[\s \@]>+ }
         token status    { <-[ 0..9 a..f ]> \S* }
         token address   { <[ \. : 0..9 a..f ]>+ }
         token ws        { " "+ }

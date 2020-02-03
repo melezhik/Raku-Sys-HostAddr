@@ -1,6 +1,7 @@
 Revision history for Sys::HostAddr
 
 {{$NEXT}}
+  * Support docker containers
 
 0.1.1  2020-02-02T06:51:32Z
   * Support WSL (no status in the ip output)
