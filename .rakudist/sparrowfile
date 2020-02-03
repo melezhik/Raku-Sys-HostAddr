@@ -1,0 +1,3 @@
+zef "https://github.com/melezhik/sparrow6-openssl-install.git";
+
+module-run "OpenSSL::Install";
